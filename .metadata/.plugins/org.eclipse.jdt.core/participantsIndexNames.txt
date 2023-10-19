@@ -1,0 +1,7 @@
+INDEX VERSION 1.134
+/Users/kaloa/springboot/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/587658175.index
+/SpringBootEx2/src/main/java
+/Users/kaloa/springboot/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2898362698.index
+/SpringBootEx2/src/main/java
+/Users/kaloa/springboot/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3765337127.index
+/SpringBootEx2/src/main/java

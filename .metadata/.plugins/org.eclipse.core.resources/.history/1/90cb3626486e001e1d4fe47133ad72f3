@@ -1,0 +1,26 @@
+package boot.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class FormController {
+	
+	@GetMapping("")
+	public String form1()
+	{
+		return null;
+	}
+	
+	@GetMapping("")
+	public String form2()
+	{
+		return null;
+	}
+	
+	@GetMapping("")
+	public String form3()
+	{
+		return null;
+	}
+}
