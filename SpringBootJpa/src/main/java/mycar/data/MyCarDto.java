@@ -38,4 +38,7 @@ public class MyCarDto {
 	@Column(updatable = false) //수정시 이 컬럼은 수정하지 않겠다는 뜻
 	//updatable = false 없을시 날짜가 null로 찍힐것
 	private Timestamp guipday;
+	
+	@Column
+	private String carphoto; 
 }

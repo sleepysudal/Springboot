@@ -12,8 +12,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>
-		<form action="insert" method="post">
+	<div style="margin:100px 100px; width:500px;">
+		<form action="insert" method="post" enctype="multipart/form-data">
 			<table class="table table-bordered">
 				<tr>
 					<th>자동차명</th>
@@ -37,6 +37,13 @@
 					<th>구입일</th>
 					<td>
 						<input type="date" name="carguip" class="form-control" style="width:200px;"  value="2023-10-10">
+					</td>
+				</tr>
+				
+				<tr>
+					<th>사진</th>
+					<td>
+						<input type="file" name="carupload" class="form-control" style="width:200px;"  required="required">
 					</td>
 				</tr>
 				<tr>

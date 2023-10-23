@@ -1,0 +1,23 @@
+#tomcat port 
+server:
+  port: 9001
+#jsp
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+  devtools:
+    livereload:
+      enabled: true
+#mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/coffee?serverTimezone=Asia/Seoul
+    username: sudal
+    password: 1234
+#mybatis
+mybatis:
+  type-aliases-package: data.model.*  #data.model.dao, data.model.dto 를 생략
+  mapper-locations:
+  - /mapper/**/*.xml
