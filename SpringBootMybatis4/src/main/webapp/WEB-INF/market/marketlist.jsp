@@ -41,7 +41,12 @@
      			<td>${i.count }</td>
      			<td>
      			${dto.sang } 
-     			<img alt="" src="../save/${dto.photoname }" style="width:100px; height:100px;"> 
+     			<c:if test="${dto.photoname!=null }">
+              	<img alt="" src="../save/${dto.photoname }" width="80" height="80" border="1" hspace="10">
+             	 </c:if>
+             	 <c:if test="${dto.photoname==null }">
+              	<img alt="" src="../save/noimg.jpg" width="80" height="80" border="1" hspace="10">
+              	</c:if>
      			</td>
      			<td><fmt:formatNumber value="${dto.price }" type="currency"/></td>
      			

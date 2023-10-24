@@ -25,7 +25,7 @@
 		<tr>
 			<th>상품사진</th>
 			<td>
-			<input type="file" name="upload" required="required" class="form-control" style="width:200px;">
+			<input type="file" name="upload"  class="form-control" style="width:200px;">
 			</td>
 		</tr>
 		<tr>
