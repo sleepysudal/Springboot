@@ -14,7 +14,7 @@
 <body>
 <!-- 상대경로 복잡할땐 이거 복사해서 쓰면됨 -->
 <c:set var="root" value="<%=request.getContextPath() %>"/>
-<a><img alt="" src="${root }/image/title.png">
-<b>SpringBoot+Mybatis+Tiles</b></a>
+<a href="/"><img alt="" src="${root }/image/go7.png" style="width:100%; height:100%;">
+</a>
 </body>
 </html>

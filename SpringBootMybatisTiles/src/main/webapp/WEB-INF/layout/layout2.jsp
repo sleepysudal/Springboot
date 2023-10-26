@@ -12,43 +12,27 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
-div.layout div{border: 0px solid black; }
 
-div.layout div.face{
-position: absolute;
-left:20px;
-top:20px;
-width:300px;
-height:300px;
-}
+div.layout div
+{border: 1px solid black; }
 
 div.layout div.title{
 position: absolute;
-left:350px;
-width:1200px;
-height: 320px;
-
+top: 10px;
+left:450px;
+height: 100px;
 }
 div.layout div.menu{
 position: absolute;
-top: 350px;
-left:350px;
+top: 150px;
+left:250px;
 height: 100px;
 
-}
-div.layout div.info{
-position: absolute;
-top: 550px;
-left:50px;
-height: 200px;
-font-family: 'Dongle';
-font-size:17px;
-width:200px;
 }
 
 div.layout div.main{
 position: absolute;
-top: 750px;
+top: 250px;
 left:300px;
 height: 1000px;
 font-family: 'Dongle';
@@ -60,22 +44,15 @@ width:1000px;
 </head>
 <body>
 <div class="layout">
-	
-	<div class="face">
-	<tiles:insertAttribute name="face"/>
-	</div>
 
 	<div class="title">
-	<tiles:insertAttribute name="title"/>
+	<tiles:insertAttribute name="title2"/>
 	</div>
 	
 	<div class="menu">
-	<tiles:insertAttribute name="menu"/>
+	<tiles:insertAttribute name="menu2"/>
 	</div>
 	
-	<div class="info">
-	<tiles:insertAttribute name="info"/>
-	</div>
 	
 	<div class="main">
 	<tiles:insertAttribute name="main"/>

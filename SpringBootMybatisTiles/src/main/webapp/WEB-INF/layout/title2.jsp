@@ -14,9 +14,8 @@
 <body>
 <!-- 상대경로 복잡할땐 이거 복사해서 쓰면됨 -->
 <c:set var="root" value="<%=request.getContextPath() %>"/>
-<img alt="" src="${root }/image/go5.jpeg" style="width:100%; height:100%;">
-<img alt="" src="${root }/image/go6.jpeg" style="width:100%; height:100%;">
-<img alt="" src="${root }/image/go7.jpeg" style="width:100%; height:100%;">
-
+<a href="/"><img alt="" src="${root }/image/mushroom.png" style="width:400px; height:100px;">
+<b>여기가 타이틀 칸입니다 타이틀은 여기에 꾸미자</b>
+<b>SpringBoot+Mybatis+Tiles</b></a>
 </body>
 </html>

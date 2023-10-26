@@ -14,9 +14,9 @@
 <body>
 <!-- 상대경로 복잡할땐 이거 복사해서 쓰면됨 -->
 <c:set var="root" value="<%=request.getContextPath() %>"/>
-<img src="${root }/image/go1.jpeg"><br>
-<img src="${root }/image/go3.jpeg"><br>
-<img src="${root }/image/go4.jpeg"><br>
-<h2>Main Page 입니다</h2>
+<img src="${root }/image/go1.jpeg" style="width:300px; height:300px;"><br>
+<img src="${root }/image/go3.jpeg" style="width:300px; height:300px;"><br>
+<img src="${root }/image/go4.jpeg" style="width:300px; height:300px;"><br>
+
 </body>
 </html>

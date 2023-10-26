@@ -24,7 +24,7 @@ text-align: center; <!--글자 가운데-->
 margin-right:10px;
 font-size:24px;
 font-family:'Gaegu';
-background-color:#f5f5dc;
+background-color:#ff00ff;
 cursor:pointer;
 }
 ul.menu li a{
@@ -36,7 +36,7 @@ color:black;
 <body>
 <!-- 상대경로 복잡할땐 이거 복사해서 쓰면됨 -->
 <c:set var="root" value="<%=request.getContextPath() %>"/>
-
+<b>여기는 메뉴바입니다</b>
 	<ul class="menu">
 		<li>
 			<a href="/">Home</a>

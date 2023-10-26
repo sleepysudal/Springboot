@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,93 +22,193 @@ import boot.data.dto.IpgoDto;
 import boot.data.mapper.IpgoMapperInter;
 
 @Controller
-
 public class IpgoController {
-	
-	@Autowired
-	IpgoMapperInter mapper;
-	
-	@GetMapping("/")
-	public String start()
-	{
-		return "/layout/main";
-	}
-	
-	
-	
-  @GetMapping("/ipgo/list")
-	public ModelAndView list()
-	{
-		ModelAndView model = new ModelAndView();
-		
-		int totalcount = mapper.getTotalCount();
-		List<IpgoDto>list = mapper.getAllIpgos();
-		
-		model.addObject("totalCount", totalcount);
-		model.addObject("list", list);
-		//model.setViewName("ipgolist"); jsp
-		model.setViewName("/ipgo/ipgolist");//tiles 경로로 찾아감
-		return model;
-	}
-	
-	
-	@GetMapping("/ipgo/ipgoform")
-	public String form()
-	{
-		return "/ipgo/ipgoform";
-	}
-	
-	
-	//사진여러개 하고싶으면 arraylist 멀티파일 임
-	@PostMapping("/ipgo/insert")
-	public String insert(@ModelAttribute IpgoDto dto,
-			@RequestParam ArrayList<MultipartFile> photo,
-			HttpSession session)
-	{
-		String path = session.getServletContext().getRealPath("/upload");
-		System.out.println(path);
-		
-		String uploadName= "";
-		
-		if(photo.get(0).getOriginalFilename().equals(""))
-			uploadName="no";
-		else {
-			for(MultipartFile f:photo)
-			{
-				SimpleDateFormat sdf= new SimpleDateFormat("yyyyMMddHHmmss");
-				String fName = sdf.format(new Date())+"_"+f.getOriginalFilename();
-				uploadName+=fName+",";
-				
-				//업로드
-				try {
-					f.transferTo(new File(path+"/"+fName));
-				} catch (IllegalStateException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			//photo 마지막 컴마 제거
-			uploadName=uploadName.substring(0, uploadName.length()-1);
-		}
-		dto.setPhotoname(uploadName);
-		mapper.insertIpgo(dto);
-		
-		return "redirect:list";
-	}
-	@GetMapping("/ipgo/content")
-	public ModelAndView content(@RequestParam String num)
-	{
-		ModelAndView model = new ModelAndView();
-		
-		IpgoDto dto=mapper.getData(num);
-		
-		model.addObject("dto", dto);
-		model.setViewName("detail");
-		
-		return model;
-	}
-	
+
+   @Autowired
+   IpgoMapperInter mapper;
+
+   @GetMapping("/")
+   public String start()
+   {
+      return "/layout/main";  //포트번호만 적어도 알아서 리스트로감
+   }
+
+   @GetMapping("/ipgo/list")
+   public ModelAndView list()
+   {
+      ModelAndView model=new ModelAndView();
+
+      int totalcount=mapper.getTotalCount();
+      List<IpgoDto> list=mapper.getAllIpgos();
+
+      model.addObject("totalcount", totalcount);
+      model.addObject("list", list);
+
+      model.setViewName("/ipgo/ipgolist");
+
+      return model;
+   }
+
+   @GetMapping("/ipgo/ipgoform")
+   public String ipgoform()
+   {
+      return "/ipgo/ipgoform";
+   }
+   
+   @PostMapping("/ipgo/insert")
+   public String insert(@ModelAttribute IpgoDto dto,
+         @RequestParam ArrayList<MultipartFile> photo,
+         HttpSession session)
+   {
+
+      //실제경로
+      String path=session.getServletContext().getRealPath("/upload");
+      System.out.println(path);
+
+      SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");//시분초까지 표시하므로 이름이 겹칠일이없음
+
+
+      String uploadName="";
+
+      if(photo.get(0).getOriginalFilename().equals("")) //0번지의 파일이름이 빈문자열이면 uploadName은 no
+         uploadName="no";
+
+      else {
+
+         for(MultipartFile f:photo)
+         {
+            String fName=sdf.format(new Date())+"_"+f.getOriginalFilename();
+            uploadName+=fName+","; //파일이름에 ,를 추가 db엔 콤마가 들어가서 저장
+
+            try {
+               f.transferTo(new File(path+"/"+fName));
+            } catch (IllegalStateException e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+            } catch (IOException e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+            }
+         }
+
+         //photo에서 마지막 컴마 제거"(사진이 나올때는 콤마가 제거되서 나와야함)
+         uploadName=uploadName.substring(0, uploadName.length()-1);
+
+      }
+      //dto의 photo에 넣기
+      dto.setPhotoname(uploadName);
+
+      mapper.insertIpgo(dto);
+
+      return "redirect:list";
+
+   }
+
+   @GetMapping("/ipgo/content")
+   public ModelAndView detail(@RequestParam String num)
+   {
+
+      ModelAndView model=new ModelAndView();
+
+      IpgoDto dto=mapper.getData(num);
+
+      model.addObject("dto", dto);
+
+      model.setViewName("/ipgo/detail");
+
+
+      return model;
+   }
+
+   @GetMapping("/ipgo/uform")
+   public ModelAndView updateform(@RequestParam String num)
+   {
+      ModelAndView model= new ModelAndView();
+
+      IpgoDto dto= mapper.getData(num);
+
+      model.addObject("dto", dto);
+
+      model.setViewName("/ipgo/updateform");
+
+      return model;
+   }
+
+   @PostMapping("/ipgo/update")
+   public String update(@ModelAttribute IpgoDto dto,
+         @RequestParam ArrayList<MultipartFile> photo,
+         HttpSession session)
+   {
+
+      String path=session.getServletContext().getRealPath("/upload");
+      System.out.println(path);
+      SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
+            
+            String uploadName="";
+            
+            //사진선택안할경우 null
+            if(photo.get(0).getOriginalFilename().equals(""))
+               uploadName=null;
+            else {
+               
+               String pre_photo=mapper.getData(dto.getNum()).getPhotoname();
+               
+               String []pre_fName=pre_photo.split(",");
+               for(String f:pre_fName)
+               {
+                  File file=new File((path+"\\"+f));
+                  file.delete();
+               }
+            
+               for(MultipartFile f:photo)
+               {
+                  String fName=sdf.format(new Date())+"-"+f.getOriginalFilename();
+                  uploadName+=fName+",";
+                  
+                  try {
+                     f.transferTo(new File(path+"\\"+fName));
+                  } catch (IllegalStateException e) {
+                     // TODO Auto-generated catch block
+                     e.printStackTrace();
+                  } catch (IOException e) {
+                     // TODO Auto-generated catch block
+                     e.printStackTrace();
+                  }
+               }
+
+            //photo에서 마지막 컴마 제거
+               uploadName=uploadName.substring(0, uploadName.length()-1);
+         }
+            
+      dto.setPhotoname(uploadName);
+      //update
+     // mapper.updateIpgo(dto);
+      
+      //수정후 디테일페이지로 이동
+      return "redirect:list";
+   }
+   
+   
+   @GetMapping("/ipgo/delete")
+   public String delete(@RequestParam String num,
+         HttpSession session)
+   {
+      
+      String path=session.getServletContext().getRealPath("/upload");
+      System.out.println(path);
+            
+               
+      String pre_photo=mapper.getData(num).getPhotoname();
+      
+      String []pre_fName=pre_photo.split(",");
+      for(String f:pre_fName)
+      {
+         File file=new File((path+"\\"+f));
+         file.delete();
+      }
+
+     // mapper.deleteIpgo(num);
+
+      return "redirect:list";
+   }
 }
