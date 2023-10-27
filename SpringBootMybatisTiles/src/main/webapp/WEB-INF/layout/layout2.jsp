@@ -34,10 +34,10 @@ div.layout div.main{
 position: absolute;
 top: 250px;
 left:300px;
-height: 1000px;
+height: 400px;
 font-family: 'Dongle';
 font-size:17px;
-width:1000px;
+width:800px;
 }
 
 </style>

@@ -7,7 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Gaegu:wght@300&family=Nanum+Pen+Script&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
@@ -17,19 +19,18 @@ list-style: none;
 ul.menu li{
 width:120px;
 float:left;
-border:1px solid gray;
+border:0px solid gray;
 height:60px;
 line-height: 60px;
 text-align: center; <!--글자 가운데-->
 margin-right:10px;
 font-size:24px;
-font-family:'Gaegu';
-background-color:#f5f5dc;
+font-family:'Gothic';
 cursor:pointer;
 }
 ul.menu li a{
 text-decoration: none;
-color:black;
+color:white;
 }
 </style>
 </head>
@@ -43,30 +44,30 @@ color:black;
 		</li>
 	
 		<li>
-			<a href="${root }/ipgo/ipgoform">상품등록</a>
+			<a href="${root }/ipgo/ipgoform">AddSang</a>
 		</li>
 	
 		<li>
-			<a href="${root }/ipgo/list">상품목록</a>
+			<a href="${root }/ipgo/list">List</a>
 		</li>
 		
 		<li>
-			<a href="${root }/board/list">게시판</a>
+			<a href="${root }/board/list">Board</a>
 		</li>
 		
 		<li>
-			<a href="${root }/member/list">회원목록</a>
+			<a href="${root }/member/list">MemList</a>
 		</li>
 		
 		<li>
-			<a href="${root }/member/form">회원가입</a>
+			<a href="${root }/member/myinfo">MyInfo</a>
 		</li>
 		
 		<li>
-			<a href="${root }/road/map">오시는길</a>
+			<a href="${root }/road/map">Map</a>
 		</li>
 		<li>
-			<a href="${root }/login/main">로그인</a>
+			<a href="${root }/login/main">Login</a>
 		</li>
 		
 		

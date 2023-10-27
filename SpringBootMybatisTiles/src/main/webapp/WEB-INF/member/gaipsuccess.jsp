@@ -12,11 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:set var="root" value="<%=request.getContextPath() %>"/>
-
-<video autoplay controls loop muted poster="${root }/image/go7.png" style="width:100%; height:100%;" preload="auto">
-  <source src="${root }/image/goavi.mp4" type="video/mp4">
-</video>
-
+<h1 class="alert alert-primary">${dto.id }님 회원가입을 축하드립니다</h1>
+<button type="button" class="btn btn-outline-success" onclick="location.href='/'">홈으로 가기</button>
 </body>
 </html>

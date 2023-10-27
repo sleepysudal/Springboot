@@ -12,6 +12,33 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h3 class="alert alert-primary">${totalcount }명의 회원이 있습니다</h3>
+<button type="button" class="btn btn-outline-success btn-lg" onclick="location.href='add'">가입</button>
 
+<table class="table table-striped" style="width:1000px;">
+	<caption align="top">고윤정 팬리스트</caption>
+	<tr align="center">
+		<th>번호</th>
+		<th>이름</th>
+		<th>아이디</th>
+		<th>프로필사진</th>
+		<th>이메일</th>
+		<th>가입일</th>
+	</tr>
+	
+		<c:forEach var="dto" items="${list }" varStatus="i">
+			<tr>
+			<td>${i.count }</td>
+			<td>${dto.name }</td>
+			<td>${dto.id }</td>
+			<td>
+			<img alt="" src="../upload/${dto.photo }" style="width:100px; height:100px;">
+			</td>
+			<td>${dto.email }</td>
+			<td>${dto.gaipday }</td>
+			</tr>
+		</c:forEach>
+	
+</table>
 </body>
 </html>

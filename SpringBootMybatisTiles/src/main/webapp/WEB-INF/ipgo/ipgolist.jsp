@@ -14,7 +14,7 @@
 <body>
 
 <div class="alert alert-info" style="width:700px;">
-<b>총 ${totalCount }개의 상품이 입고되었습니다</b>
+<b>총 ${totalcount }개의 상품이 입고되었습니다</b>
 
 
 <table class="table table bordered" style="width:600px;">
