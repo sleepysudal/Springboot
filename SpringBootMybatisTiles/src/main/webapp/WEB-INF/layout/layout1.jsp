@@ -38,12 +38,13 @@ height: 200px;
 font-family: 'Dongle';
 font-size:17px;
 width:200px;
+border: solid 1px red;
 }
 
 div.layout div.main{
 position: absolute;
 top: 600px;
-left:400px;
+left:200px;
 font-family: 'Dongle';
 font-size:30px;
 width:800px;

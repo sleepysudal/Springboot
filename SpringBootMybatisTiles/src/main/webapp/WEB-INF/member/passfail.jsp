@@ -12,18 +12,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- 상대경로 복잡할땐 이거 복사해서 쓰면됨 -->
-<c:set var="root" value="<%=request.getContextPath() %>"/>
-<a href="/"><img alt="" src="${root }/image/go7.png" style="width:100%; height:100%;">
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<c:if test="${sessionScope.loginok==null }">
-<button type="button" class="btn btn-outline-success" onclick="location.href='${root}/login/main'">Login</button>
-</c:if>
-
-<c:if test="${sessionScope.loginok!=null }">
-<b>${sessionScope.myid }님이 로그인중입니다</b>
-<button type="button" class="btn btn-outline-danger" onclick="location.href='${root}/login/logoutprocess'">Logout</button>
-</c:if>
+	<script type="text/javascript">
+	alert("로그인실패!!");
+	history.back();
+	</script>
 </body>
 </html>

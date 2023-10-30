@@ -35,7 +35,7 @@
 	
 	<!-- wild card 레이아웃 2  value= 1은 폴더명 2는 파일명임-->
 	<definition name="/sub/*/*" extends="layout2">
-	<put-attribute name="main2" value="/WEB-INF/{1}/{2}.jsp"/>
+	<put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp"/>
 	</definition>
 	
 	

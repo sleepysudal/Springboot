@@ -31,8 +31,10 @@ public class MemberController {
 	MemberService service;
 	
 	@GetMapping("/member/myinfo")
-	public String memberform()
+	public String memberform(Model model)
 	{
+		List<MemberDto>list = service.getAllMembers();
+		model.addAttribute("list", list);
 		return "/member/myinfo";
 	}
 	
@@ -94,6 +96,48 @@ public class MemberController {
 		 
 		service.insertMember(dto);
 		return "/member/gaipsuccess";
+	}
+	//delete ajax
+	@GetMapping("/member/delete")
+	@ResponseBody
+	public void deleteMember(@RequestParam String num)
+	{
+		service.deleteData(num);
+	}
+	//
+	@GetMapping("/member/deletemyinfo")
+	public String deleteMyinfo(String num, HttpSession session) {
+		service.deleteData(num);
+		
+		session.removeAttribute("loginok");
+		
+		return "redirect:list";
+	}
+	//사진만 수정
+	@PostMapping("/member/updatephoto")
+	@ResponseBody
+	public void uploadphoto(String num, MultipartFile photo, HttpSession session)
+	{
+		//업로드 경로
+		String path = session.getServletContext().getRealPath("/membersave");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		String fileName = sdf.format(new Date())+photo.getOriginalFilename(); 
+		
+		//업로드
+		try {
+			photo.transferTo(new File(path+"/"+fileName));
+			
+			service.updatePhoto(num, fileName); //사진 수정
+			session.setAttribute("loginphoto", fileName);
+			
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

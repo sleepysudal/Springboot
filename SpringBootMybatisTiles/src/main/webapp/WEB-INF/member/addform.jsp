@@ -101,7 +101,7 @@ $(function(){
 						</td>
 						<td>
 						<div class="d-inline-flex">
-							<input type="text" placeholder="아이디입력" name="id" id="id" class="form-control" style="width:120px;">
+							<input type="text" placeholder="아이디입력" name="id" id="id" class="form-control" style="width:120px; font-size: 20px;">
 							<button type="button" class="btn btn-danger" id="btnidcheck">중복체크</button>&nbsp;&nbsp;
 							<span class="idsuccess" style="width:60px; color:green;"></span></div>
 						</td>
@@ -109,24 +109,24 @@ $(function(){
 					<tr>
 						<td>
 						<div class="d-inline-flex">
-							<input type="password" style="width:120px;" class="form-control" name="pass" id="pass" placeholder="숫자4자리" maxlength="4" required="required">
-							<input type="password" style="width:120px;" class="form-control" id="pass2" placeholder="숫자4자리" maxlength="4" required="required">
+							<input type="password" style="width:120px; font-size: 20px;" class="form-control" name="pass" id="pass" placeholder="숫자4자리" maxlength="4" required="required">
+							<input type="password" style="width:120px; font-size: 20px;" class="form-control" id="pass2" placeholder="숫자4자리" maxlength="4" required="required">
 							<span class="passsuccess" style="width:60px; color:green;"></span></div>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<input type="text" name="name" class="form-control" placeholder="이름" required="required" style="width:150px;">
+							<input type="text" name="name" class="form-control" placeholder="이름" required="required" style="width:150px; font-size: 20px;">
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<input type="text" name="email" class="form-control" placeholder="이메일" required="required"  style="width:250px;">
+							<input type="text" name="email" class="form-control" placeholder="이메일" required="required"  style="width:250px; font-size: 20px;">
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<input type="text" name="addr" class="form-control" placeholder="주소입력" required="required"  style="width:300px;">
+							<input type="text" name="addr" class="form-control" placeholder="주소입력" required="required"  style="width:300px; font-size: 20px;">
 						</td>
 					</tr>
 					<tr>

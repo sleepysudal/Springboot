@@ -11,21 +11,14 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 </head>
-<body>
 <!-- 상대경로 복잡할땐 이거 복사해서 쓰면됨 -->
 <c:set var="root" value="<%=request.getContextPath() %>"/>
-
-<!-- 로그인 안하면 기본사진 , 로그인하면 자기사진으로 변경 -->
-<c:if test="${sessionScope.loginok==null }">
-	<img alt="" src="${root }/image/noimage.png" style="width:100%; height:100%;">
-</c:if>
-
-<c:if test="${sessionScope.loginok!=null }">
-<img alt="" src="${root }/membersave/${sessionScope.loginphoto}" style="width:100%; height:100%;">
-</c:if>
-<img alt="" src="${root }/image/go8.jpg" style="width:100%; height:100%;">
-<img alt="" src="${root }/image/go9.jpg" style="width:100%; height:100%;">
-<img alt="" src="${root }/image/go10.jpg" style="width:100%; height:100%;">
-
+<body>
+	<div>
+		<img alt="" src="${root }/image/go2.webp" width="200" align="left" hspace="100"/>
+		<br><br>
+		<b>${name}님 환영합니다</b><br><br>
+		<button type="button" class="btn btn-outline-info" style="width:100px;" onclick="location.href='logoutprocess'">로그아웃</button>
+	</div>
 </body>
 </html>
