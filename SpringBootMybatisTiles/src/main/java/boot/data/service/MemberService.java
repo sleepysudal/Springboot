@@ -78,6 +78,12 @@ public class MemberService implements MemberServiceInter {
 		mapperInter.updateMember(dto);
 	}
 
+	@Override
+	public MemberDto getDataByNum(String num) {
+		// TODO Auto-generated method stub
+		return mapperInter.getDataByNum(num);
+	}
+
 	
 	
 

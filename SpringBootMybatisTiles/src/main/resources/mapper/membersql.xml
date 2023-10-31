@@ -39,5 +39,8 @@
   update bootmember set name=#{name}, addr=#{addr}, email=#{email} where num=#{num}
   </update>
   
+  <select id="getDataByNum">
+   select * from bootmember where num=#{num}
+  </select>
   </mapper>
   

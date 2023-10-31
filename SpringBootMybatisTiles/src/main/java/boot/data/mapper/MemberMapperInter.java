@@ -19,4 +19,5 @@ public interface MemberMapperInter {
 	public void deleteData(String num);
 	public void updatePhoto(Map<String, String>map); //num에 의한 사진변경
 	public void updateMember(MemberDto dto);
+	public MemberDto getDataByNum(String num);
 }

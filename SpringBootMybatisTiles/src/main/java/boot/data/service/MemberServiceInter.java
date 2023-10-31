@@ -15,6 +15,7 @@ public interface MemberServiceInter {
 	public void deleteData(String num);
 	public void updatePhoto(String num, String photo); //num에 의한 사진변경
 	public void updateMember(MemberDto dto);
+	public MemberDto getDataByNum(String num);
 	
 }
 	

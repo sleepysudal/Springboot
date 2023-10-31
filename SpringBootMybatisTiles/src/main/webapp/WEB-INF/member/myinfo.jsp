@@ -39,7 +39,30 @@ $(function(){
 		
 		})
 	})
-})
+
+	$("#btnupdate").click(function(){
+		//var num=$("#unum").val(); 히든으로 번호 숨겨놧음
+		var name = $("#name").val();
+		var email = $("#email").val();
+		var addr = $("#addr").val();
+		var num = $(this).attr("num");
+		
+		//alert(name+","+email+","+addr+","+num);
+		
+		$.ajax({
+			type:"post",
+			dataType:"html",
+			url:"updateMember",
+			data:{"name":name, "email":email, "addr":addr, "num":num},
+			success:function(){
+				
+				location.reload();
+			}
+		})
+	})
+
+	
+});
 </script>
 </head>
 <body>
@@ -58,7 +81,7 @@ $(function(){
 			<td style="width: 300px">회원명 : ${dto.name}</td>	
 			<td rowspan="5" align="center" valign="bottom" style="width: 200px; vertical-align: middle;">	
 				
-				<button type="button" class="btn btn-outline-secondary" onclick="location.href='updateform?num=${dto.num}'">수정</button>
+				<button type="button" class="btn btn-outline-secondary myupdate2" num="${dto.num }" data-bs-toggle="modal" data-bs-target="#myupdate">수정</button>
 				<br><br>
 				<button type="button" class="btn btn-outline-secondary" onclick="location.href='deletemyinfo?num=${dto.num}'">삭제</button>
 							
@@ -73,13 +96,47 @@ $(function(){
 		<tr>
 			<td>주소:${dto.addr}</td>
 		</tr>
-		<tr>
-			<td>가입일: <fmt:formatDate value="${dto.gaipday }" pattern="yyyy-MM-dd HH:mm"/></td>
-		</tr>
+		
+		<!-- The Modal -->
+	<div class="modal" id="myupdate">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Myinfo Update</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+				<input type="text" class="form-control" id="name" value="${dto.name }"
+				placeholder="회원명입력"><br>
+				<input type="text" class="form-control" id="email" value="${dto.email }"
+				placeholder="이메일입력"><br>
+				<input type="text" class="form-control" id="addr" value="${dto.addr }"
+				placeholder="주소입력"><br>
+				
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+				<input type="hidden" name="unum" id="unum" value="${dto.num }">
+				<button type="button" class="btn btn-danger"
+				id="btnupdate" data-bs-dismiss="modal" num="${dto.num }">update</button>
+					<button type="button" class="btn btn-danger"
+						data-bs-dismiss="modal">close</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
 		
 		</c:if>
 	</c:forEach>
 	
-</table></div>
+</table>
+</div>
+	
 </body>
 </html>

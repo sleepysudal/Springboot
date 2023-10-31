@@ -104,15 +104,24 @@ public class MemberController {
 	{
 		service.deleteData(num);
 	}
-	//
+	//delete
 	@GetMapping("/member/deletemyinfo")
-	public String deleteMyinfo(String num, HttpSession session) {
-		service.deleteData(num);
-		
-		session.removeAttribute("loginok");
-		
-		return "redirect:list";
-	}
+	   @ResponseBody
+	   public void deletemyinfo(String num,
+	         HttpSession session)
+	   {
+	      String path=session.getServletContext().getRealPath("/membersave");
+	      String photo=service.getDataByNum(num).getPhoto();
+	      File file=new File(path+"/"+photo);
+	      file.delete();
+	      
+	      service.deleteData(num);
+	      session.removeAttribute("loginok");
+	      session.removeAttribute("myid");
+	      session.removeAttribute("loginphoto");
+	      session.removeAttribute("saveok");
+	      
+	   }
 	//사진만 수정
 	@PostMapping("/member/updatephoto")
 	@ResponseBody
@@ -138,6 +147,18 @@ public class MemberController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	
+	//myinfo 업데이트 map으로 넘기면 json이고 session으로 넘기면 서버에서 받아오는거고 service로 넘기면 그냥받기
+	@PostMapping("/member/updateMember") 
+	@ResponseBody
+	public void updateMember(@ModelAttribute MemberDto dto)
+	{
+		
+		service.updateMember(dto);
+		
+	
 	}
 	
 }
