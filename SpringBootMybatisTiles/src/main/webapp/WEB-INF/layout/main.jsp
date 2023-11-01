@@ -13,16 +13,18 @@
 <style type="text/css">
 	body{
 		background-color:#fde6e7;
+		<!--background-image: url("image/go7.png");-->
+		
 	}
 </style>
 </head>
 <body>
 <!-- 상대경로 복잡할땐 이거 복사해서 쓰면됨 -->
 <!-- vh :  8.x 퍼센트-->
-<c:set var="root" value="<%=request.getContextPath() %>"/>
+
 <div align="center">
 <h1 style="color:white; font-size: 90px;" >YJ PICK</h1>
-
+<c:set var="root" value="<%=request.getContextPath() %>"/>
 <video autoplay controls loop muted poster="${root }/image/go7.png" style="width:800px; height: 600px; object-fit:cover;"  preload="auto">
   <source src="${root }/image/goavi.mp4" type="video/mp4">
 </video>

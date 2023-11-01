@@ -42,5 +42,7 @@
   <select id="getDataByNum">
    select * from bootmember where num=#{num}
   </select>
+  
+ 
   </mapper>
   

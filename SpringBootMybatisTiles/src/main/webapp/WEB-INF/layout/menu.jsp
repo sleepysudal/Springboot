@@ -52,7 +52,7 @@ color:white;
 		</li>
 		
 		<li>
-			<a href="${root }/board/list">Board</a>
+			<a href="${root }/reboard/list">Board</a>
 		</li>
 		
 		<li>
@@ -61,6 +61,9 @@ color:white;
 		
 		<li>
 			<a href="${root }/member/myinfo">MyInfo</a>
+		</li>
+		<li>
+			<a href="${root }/memboard/list">MemBoard</a>
 		</li>
 		
 		<li>
