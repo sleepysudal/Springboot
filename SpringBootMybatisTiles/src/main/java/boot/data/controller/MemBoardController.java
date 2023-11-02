@@ -84,6 +84,7 @@ public class MemBoardController {
 	@PostMapping("/insert")
 	public String insert(HttpSession session,
 			@ModelAttribute MemBoardDto dto
+			
 			)
 	{
 		
@@ -126,7 +127,7 @@ public class MemBoardController {
 	}
 	
 	@GetMapping("/content")
-	public ModelAndView content(@RequestParam String num)
+	public ModelAndView content(@RequestParam String num, @RequestParam(value = "currentPage", defaultValue = "1") int currentPage)
 	{
 		ModelAndView model =new ModelAndView();
 		
@@ -150,8 +151,21 @@ public class MemBoardController {
 		else
 			model.addObject("bupload",false);
 		
+		model.addObject("currentPage", currentPage);
+		
 		model.setViewName("/memboard/content");
 		return model;
 	}
-	
+	@GetMapping("/updateform")
+	public ModelAndView uform()
+	{
+		ModelAndView model = new ModelAndView();
+		model.setViewName("/memboard/updateform");
+		return model;
+	}
+	@GetMapping("/delete")
+	public String delete(int currentPage)
+	{
+		return "redirect:list?currentPage="+currentPage;
+	}
 }

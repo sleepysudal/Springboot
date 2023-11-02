@@ -26,5 +26,6 @@
  	<select id="getlist" parameterType="HashMap" resultType="memboard">
  	select * from memboard order by num desc limit #{start}, #{perpage}
  	</select>
+
   </mapper>
   
