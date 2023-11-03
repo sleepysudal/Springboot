@@ -50,4 +50,23 @@ public class MbanswerController {
 		return mapper.getAllAnswers(num);
 
 	}
+	//수정전 content 띄우기
+	@GetMapping("/adata")
+	public MbanswerDto getData(String idx)
+	{
+		
+		return mapper.getAnswer(idx);
+	}
+	//수정
+	@PostMapping("/aupdate")
+	public void aupdate(@ModelAttribute MbanswerDto dto)
+	{
+		mapper.updateMbanswer(dto);
+	}
+	//삭제
+	@PostMapping("/adelete")
+	public void adelete(String idx)
+	{
+		mapper.deleteMbAnswer(idx);
+	}
 }

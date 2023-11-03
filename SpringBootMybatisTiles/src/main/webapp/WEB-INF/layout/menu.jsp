@@ -44,7 +44,7 @@ color:white;
 		</li>
 	
 		<li>
-			<a href="${root }/ipgo/ipgoform">AddSang</a>
+			<a href="${root }/smart/list">SmartShop</a>
 		</li>
 	
 		<li>

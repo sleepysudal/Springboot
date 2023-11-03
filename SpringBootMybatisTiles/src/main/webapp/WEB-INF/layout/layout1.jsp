@@ -35,7 +35,7 @@ position: absolute;
 top: 700px;
 left:1300px;
 height: 200px;
-font-family: 'Dongle';
+font-family: 'gaegu';
 font-size:17px;
 width:200px;
 border: solid 1px red;
@@ -45,7 +45,7 @@ div.layout div.main{
 position: absolute;
 top: 600px;
 left:200px;
-font-family: 'Dongle';
+font-family: 'gaegu';
 font-size:30px;
 width:800px;
 height: 400px;

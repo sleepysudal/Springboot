@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 	body{
-		background-color:#fde6e7;
+		background-color:rgb(235,212,235);
 		<!--background-image: url("image/go7.png");-->
 		
 	}

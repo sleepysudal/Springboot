@@ -37,7 +37,7 @@ $(function(){
 				url:"/mbanswer/ainsert",
 				data:{"content":content,"num":num},
 				success:function(){
-					alert("인서트 성공");
+					//alert("인서트 성공");
 					
 					list();
 					
@@ -47,11 +47,56 @@ $(function(){
 			});
 		});
 	//댓글 수정창 띄우기
-	
+	$(document).on("click","i.mod",function(){
+		var idx=$("#idx").val();
+		//alert(idx);
+		
+		$.ajax({
+			type:"get",
+			dataType:"json",
+			url:"/mbanswer/adata",
+			data:{"idx":idx},
+			success:function(res){
+				$("#ucontent").val(res.content);
+				
+			}
+		})
+		$("#mbUpdateModal").modal("show");
+		
+	})
 	//댓글 수정
-	
+	$(document).on("click","#btnupdate",function(){
+		var content = $("#ucontent").val();
+		var idx=$("#idx").val();
+		//alert(idx+","+content);
+		
+		$.ajax({
+			type:"post",
+			dataType:"html",
+			url:"/mbanswer/aupdate",
+			data:{"idx":idx,"content":content},
+			success:function(){
+				list();
+			}
+			
+		});
+		$("#mbUpdateModal").modal("hide");
+	});
 	//댓글 삭제
-	
+	$(document).on("click","i.del",function(){
+		var idx=$("#idx").val();
+		//alert(idx);
+		
+		$.ajax({
+			type:"post",
+			dataType:"html",
+			url:"/mbanswer/adelete",
+			data:{"idx":idx},
+			success:function(){
+				list();
+			}
+		})
+	});
 
 });
 function list(){
@@ -68,9 +113,14 @@ function list(){
 			
 			var s="";
 			$.each(res,function(i,dto){
+				s+="<input type='hidden' id='idx' value='"+dto.idx+"'>";
 				s+="<b>"+dto.name+"</b>:"+dto.content;
 				s+="&nbsp;&nbsp;&nbsp;"
 				s+="<span class='day'>"+dto.writeday+"</span>";
+				if(loginok!=null&&myid==dto.myid){
+					s+= '<i class="bi bi-pencil-square mod"></i><i class="bi bi-trash3-fill del"></i><br>'
+				}
+				
 				
 				
 			});
@@ -96,6 +146,7 @@ function list(){
 			<span style="float:right;"><a href="download?clip=${dto.uploadfile }">
 			<i class="bi bi-cloud-download-fill"></i>
 			<b>${dto.uploadfile }</b></a></span>
+			
 			</c:if>
 			</td>
 		</tr>
@@ -152,6 +203,32 @@ function list(){
 			</td>
 		</tr>
 	</table>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="mbUpdateModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <input type="text" id="ucontent" class="form-control">
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" id="btnupdate">수정</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
 </div>
 </body>
 </html>
