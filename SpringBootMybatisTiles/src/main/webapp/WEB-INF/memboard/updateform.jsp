@@ -12,13 +12,14 @@
 <title>Insert title here</title>
 </head>
 <body>
- <form action="insert" method="post" enctype="multipart/form-data">
+ <form action="update" method="post" enctype="multipart/form-data">
+ <input type="hidden" name="num" value="${dto.num }">
  <table class="table table-bordered" style="width:500px;">
  <caption align="top"><b>회원전용 수정폼</b></caption>
  	<tr>
  		<th>제목</th>
  		<td>
- 			<input type="text" name="subject"  class="form-control" required="required" autofocus="autofocus">
+ 			<input type="text" name="subject"  class="form-control" required="required" autofocus="autofocus" value="${dto.subject }">
  		</td>
  	</tr>
  	<tr>
@@ -30,7 +31,7 @@
  	<tr>
  		
  		<td colspan="2">
- 			<textarea style="width:490px; height:150px;" class="form-control" required="required" name="content"></textarea>
+ 			<textarea style="width:490px; height:150px;" class="form-control" required="required" name="content">${dto.content }</textarea>
  		</td>
  	</tr>
  	

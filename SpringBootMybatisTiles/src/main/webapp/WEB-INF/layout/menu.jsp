@@ -66,6 +66,11 @@ color:white;
 			<a href="${root }/memboard/list">MemBoard</a>
 		</li>
 		
+		<li class="season">
+		
+			<a href="${root }/reboard/list">REBOARD</a>
+		</li>
+		
 		<li>
 			<a href="${root }/road/map">Map</a>
 		</li>
