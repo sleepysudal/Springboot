@@ -16,6 +16,12 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 </head>
+<c:if test="${sessionScope.loginok==null }">
+<script type="text/javascript">
+alert("로그인 후 글을 써주세요");
+history.back();
+</script>
+</c:if>
 <body>
 	<div style="margin: 50px 100px">
 		<form action="insert" method="post" enctype="multipart/form-data">

@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -88,7 +91,7 @@ public class ReboardController {
 		model.addObject("currentPage", currentPage);
 		model.addObject("list", list); // 댓글 포함 후 전달
 
-		System.out.println("totalCount=" + totalCount);
+		//System.out.println("totalCount=" + totalCount);
 
 		model.setViewName("/reboard/boardlist");
 
@@ -120,7 +123,7 @@ public class ReboardController {
 	}
 
 	@PostMapping("/insert")
-	public String insert(ReboardDto dto, ArrayList<MultipartFile> upload, HttpSession session) {
+	public String insert(ReboardDto dto, ArrayList<MultipartFile> upload, HttpSession session, int currentPage) {
 
 		String path = session.getServletContext().getRealPath("/rephoto");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -156,11 +159,35 @@ public class ReboardController {
 		service.insertReboard(dto);
 
 		//return "redirect:content?num=" + service.getMaxNum();
-		return "redirect:list";
+		return "redirect:list?currentPage="+currentPage;
 	}
 
 	@GetMapping("/content")
-	public String content() {
+	public String content(int num, int currentPage, Model model) 
+	{
+		//조회수 증가
+		service.updateReadCount(num);
+		
+		//dto
+		ReboardDto dto = service.getData(num);
+		
+		model.addAttribute("dto", dto);
+		model.addAttribute("currentPage", currentPage);
+		
 		return "/reboard/content";
 	}
+	//추천수증가
+	@GetMapping("/likes")
+	@ResponseBody
+	public Map<String, Integer> likes(@RequestParam int num) {
+		Map<String, Integer> map = new HashMap<>();
+		int likes = service.getData(num).getLikes();
+		        
+		        service.updateLikes(num);
+		        map.put("likes", likes);
+		        
+		        return map;
+	}
+	
+	
 }
